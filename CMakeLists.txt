@@ -42,7 +42,7 @@ if (JPEG_FOUND)
   add_definitions( -DHAVE_JPEG )
 endif()
 
-if(TEST)
+if(IS_TEST)
   find_library(GTEST_LIBRARY gtest)
   if(GTEST_LIBRARY STREQUAL "GTEST_LIBRARY-NOTFOUND")
     set(GTEST_SRC_DIR /usr/src/gtest CACHE STRING "Location of gtest sources")
@@ -75,7 +75,7 @@ endif()
 # install the conversion tool, .so, .a, and all the header files
 INSTALL ( PROGRAMS ${CMAKE_BINARY_DIR}/yuvconvert			DESTINATION bin )
 INSTALL ( TARGETS ${ly_lib_static}						DESTINATION lib )
-INSTALL ( TARGETS ${ly_lib_shared} LIBRARY				DESTINATION lib )
+INSTALL ( TARGETS ${ly_lib_shared} RUNTIME				DESTINATION lib )
 INSTALL ( DIRECTORY ${PROJECT_SOURCE_DIR}/include/		DESTINATION include )
 
 # create the .deb and .rpm packages using cpack
